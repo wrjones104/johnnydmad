@@ -45,7 +45,10 @@ async def johnnydmad(c, filename):
                 continue
             break
         
-    f_chaos = c
+    if c = "chaos":
+        f_chaos = True
+    else:
+        f_chaos = False
     f_dupes = False
     kw = {}
     force_dm = None
