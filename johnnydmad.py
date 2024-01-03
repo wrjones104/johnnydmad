@@ -45,7 +45,7 @@ async def johnnydmad(c, filename):
                 continue
             break
         
-    if c = "chaos":
+    if c == "chaos":
         f_chaos = True
     else:
         f_chaos = False
