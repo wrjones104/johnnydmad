@@ -797,7 +797,7 @@ def process_music(inrom, meta={}, f_chaos={}, f_dupes=False, f_battle=True, oper
 
     # -- load random choices configuration for categories (playlist file)
     # moved to function for reuse in length test mode
-    playlist_map, tierboss_pool = init_playlist(fn=playlist_filename, virtual=virtual_playlist)
+    playlist_map, tierboss_pool = init_playlist(fn=playlist_filename)
     
     track_pools = {}
     intensitytable = {}
