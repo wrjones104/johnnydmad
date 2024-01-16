@@ -37,6 +37,8 @@ except ImportError:
     from mfvitools.insertmfvi import insertmfvi, byte_insert, int_insert, SampleIDError, FreeSpaceError
 
 JOHNNYDMAD_FREESPACE = ["330000-3FFFFF"]
+DEFAULT_PLAYLIST_FILE = 'default.txt'
+
 TRAIN_SAMPLE_ID = 0x3A
 
 SAMPLE_PATH = 'samples'
@@ -46,7 +48,6 @@ LEGACY_MUSIC_PATH = os.path.join(CUSTOM_MUSIC_PATH, 'legacy')
 STATIC_MUSIC_PATH = 'static_music'
 PLAYLIST_PATH = 'playlists'
 TABLE_PATH = 'tables'
-DEFAULT_PLAYLIST_FILE = 'default.txt'
 LEGACY_LOADBRR_PATH = "../../samples/"
 
 # For LEGACY_LOADBRR_PATH, note that the filenames from tables/legacy.txt that
@@ -133,10 +134,10 @@ def open_fallback(fn, *args, **kwargs):
 def add_encoding_if_text(args, kwargs):
     if len(args) and 'b' not in args[0]:
         kwargs["encoding"] = "utf-8"
-
+        
 class PlaylistError(Exception):
-    pass    
-
+    pass
+    
 class TrackMetadata:
     def __init__(self, file="", title="", album="", composer="", arranged="", menuname=""):
         self.file, self.title, self.album, self.composer, self.arranged, self.menuname = title, album, composer, arranged, menuname
@@ -278,21 +279,24 @@ def song_variant_id(name, idx):
     else:
         return name, ""
 
-def init_playlist(fn=DEFAULT_PLAYLIST_FILE):            
+def init_playlist(fn=DEFAULT_PLAYLIST_FILE, virtual=None):
     if fn is None:
         fn = DEFAULT_PLAYLIST_FILE
     playlist_parser = configparser.ConfigParser()
-    plfile = playlist_parser.read(fallback_path(os.path.join(PLAYLIST_PATH, fn)))
-    if not plfile:
-        plfile = playlist_parser.read(fallback_path(os.path.join(PLAYLIST_PATH, fn + ".txt")))
+    if virtual is not None:
+        plfile = playlist_parser.read_string(virtual, source=fn)
+    else:
+        plfile = playlist_parser.read(fallback_path(os.path.join(PLAYLIST_PATH, fn)))
         if not plfile:
-            print(f"Playlist file {fn} empty or not found, falling back to {DEFAULT_PLAYLIST_FILE}")
-            playlist_parser.read(fallback_path(os.path.join(PLAYLIST_PATH, DEFAULT_PLAYLIST_FILE)))
+            plfile = playlist_parser.read(fallback_path(os.path.join(PLAYLIST_PATH, fn + ".txt")))
+            if not plfile:
+                print(f"Playlist file {fn} empty or not found, falling back to {DEFAULT_PLAYLIST_FILE}")
+                playlist_parser.read(fallback_path(os.path.join(PLAYLIST_PATH, DEFAULT_PLAYLIST_FILE)))
     playlist_map = {}
     tierboss_pool = set()
     for section in playlist_parser:
         for k, v in playlist_parser[section].items():
-            if str(section).lower() == "tierboss":                
+            if str(section).lower() == "tierboss":
                 tierboss_pool.update([s.strip() for s in v.split(',')])
             elif k in playlist_map:
                 playlist_map[k] += f", {v}"
@@ -793,7 +797,7 @@ def process_music(inrom, meta={}, f_chaos={}, f_dupes=False, f_battle=True, oper
 
     # -- load random choices configuration for categories (playlist file)
     # moved to function for reuse in length test mode
-    playlist_map, tierboss_pool = init_playlist(fn=playlist_filename)
+    playlist_map, tierboss_pool = init_playlist(fn=playlist_filename, virtual=virtual_playlist)
     
     track_pools = {}
     intensitytable = {}
