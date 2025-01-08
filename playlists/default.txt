@@ -33,6 +33,7 @@ cc_final:           catastrophe, grandfinale, floating
 cc_home:            prelude, balance*2
 cc_hydra:           umaro, zozo, veldt*2, dream
 cc_life:            omen3, rachel*2
+cc_miguel:          omen3, grandfinale, ruin*2, gau, tomb
 cc_pyre:            cave, train, gate*2, phoenix
 cc_valley:          veldt, mountain*2, mount2
 cc_world2:          prelude, omen3, awakening, balance*2
@@ -83,6 +84,7 @@ ct_undersea:        catastrophe, gate, ancient*2, magitek, floating, phoenix, kt
 ct_zeal:            relm, strago*2
 ct_zealpalace:      omen3, empire*2, train, ancient
 cv3_aquarius:       assault, magitek, floating*2, ktower
+cv4_beginning:      assault*2, mount2, gate, phoenix
 cv4_chandeliers:    zozo, owzer*2, train, tomb
 dc2_garden:         relm, awakening*2, gau, ruintown, forest
 dc2_palmbrinks:     spinach, what, zozo
@@ -95,8 +97,14 @@ duck_moon:          setzer, blackjack*2, johnny
 ebr_prayer:         mount2, floating, phoenix*2, ktower
 eo3_waves:              chaos
 ff1_battle:         grandfinale
+ff1_dungeon:        gate, floating, phoenix*2
 ff1_end:            prelude, village, town*2
+ff1_fiend1:         grandfinale, savethem
+ff1_fiend2:         grandfinale, assault
+ff1_final:          grandfinale
 ff1_matoya:         relm, moogles, strago*2
+ff1_mboss:          grandfinale, unforgiven
+ff1_town:           village, town*2
 ff1_volcano:        umaro, mount2, gate*2, floating, phoenix
 ff1_volcano_psx:    gate*2, ancient, dream, phoenix
 ff1_world:          balance*2, forest
@@ -105,14 +113,28 @@ ff3_battle:         grandfinale, savethem
 ff3_darkworld:      moogles, serpent, forest*2
 ff3_hyne:           owzer*2, train, ancient, dream, fanatics
 ff3_warrior:        cyan, locke, figaro*2, returners
+ff4_babil:          returners, troops*2, mount2
+ff4_baron:          cyan, figaro, troops*2
+ff4_bomb:           catastrophe*2, zozo
+ff4_boss:           grandfinale, unforgiven
 ff4_cave:           balance, cave*2, forest, tomb
+ff4_elder:          omen3, strago*2
 ff4_fiend:          catastrophe, grandfinale, savethem
 ff4_golbez:         kefka, train, owzer, fanatics*2
+ff4_illusion:       espers*2, cave, forest, tomb, dream
 ff4_moon:           zozo, ruin*2, train
 ff4_mysidia:        what, strago*2
+ff4_prologue:       prelude, omen3*2
+ff4_redwings:       omen3, returners, troops*2
+ff4_redwings_lunar: grandfinale, assault
 ff4_restless:       metamorphosis, grandfinale, unforgiven*2, assault
 ff4_rosa:           celes, rachel*2, awakening
+ff4_somewhere:      omen3, empire, shadow, martiallaw*2
+ff4_troia:          prelude, relm, village*2, town
+ff4_underworld:     balance, cave*2
 ff4_world:          falcon, balance*2, serpent
+ff4_whale:          setzer, blackjack*2
+ff4_zot:            empire, kefka, train, fanatics*2
 ff5_airship:        setzer, blackjack*2, mount2
 ff5_book:           zozo, owzer, ruin, train*2, tomb, gate, ancient
 ff5_boss:           catastrophe, grandfinale, savethem
@@ -197,10 +219,13 @@ ff7_hurry2:         metamorphosis*2, grandfinale, unforgiven, assault, savethem,
 ff7_jenova:         grandfinale, floating
 ff7_judgment:       catastrophe, assault, umaro, magitek, engine, floating, ktower*2
 ff7_mako:           omen3, zozo, ruin, train, magitek*2
+ff7_materia:        prelude, what*2
+ff7_planet:         omen3, espers*2, train, gate, dream, phoenix
 ff7_rebirth:        grandfinale, floating
 ff7_sadbar:         gau, martiallaw*2, ruintown
 ff7_temple:         omen3, espers, forest, tomb, dream
 ff8_battle:         grandfinale, assault, savethem
+ff8_heresy:         kefka, owzer, ruin, fanatics*2
 ff8_laguna:         grandfinale, magitek
 ff8_world:          prelude, ruin, balance, forest
 ff9_battle:         grandfinale
@@ -231,6 +256,7 @@ ff14_battlem:       metamorphosis, grandfinale, assault
 ff14_burn:          ruin*2, train, omen3, narshe, ancient, martiallaw, ruintown
 ff14_fate_ff6:      grandfinale, unforgiven, savethem
 ff14_forthesky:     grandfinale, cyan, savethem*2
+ff14_holminster:    assault, floating*2
 ff14_labten:        unforgiven, savethem, mount2*2
 ff14_remnants:      falcon*2
 ffmq_boss:              chaos
@@ -343,8 +369,14 @@ so2_world1_b:       espers, gate, phoenix
 sots_boss:          grandfinale, dream
 sots_boss_nointro:  cyan*2, mountain, cave
 st_dungeon:         cave*2, train, dream
+sth1_final:         ktower*2
+sth1_hill:          chocobo*2, blackjack
+sth1_marble:        zozo*2, engine
 sth1_spring:        johnny*2, moogles
 tn_darkworld:       omen3, espers, ruin*2, falcon, cave
+tob_velvet:         omen3, rachel, awakening
+tob_velvet_part1:   gau, ruin, tomb
+tob_velvet_part2:   locke
 top_battle:         grandfinale, mount2, gate
 top_boss:           unforgiven, engine
 top_morlia:         zozo, gate, ancient*2, phoenix
@@ -387,41 +419,24 @@ ff9_notalone:       grandfinale
 # relevant battle related tags will be added as well matching the approximate I/G quadrant specified
 cc_flame:       I75, G95, grandfinale, metamorphosis, catastrophe*2, fanatics*2, assault, mboss, boss, atma, bat4
 cc_harle:       H4, kefka, zozo, owzer, dream*2, train*2, H:prelude, H:omen3, H:empire, H:shadow, H:ruin, H:ruintown, H:forest, H:tomb, H:cave
-cc_miguel:      grandfinale, ruin*2, rachel, tomb, train
 crys_fields:    chocobo, johnny, gogo, moogles*2, mountain, setzer
-cv4_beginning:  H2, I00, G35, battle, locke, falcon, floating, mount2, phoenix, gate, ancient, assault*2, train, bat2, bat3
 ds4_world:      setzer, chocobo, blackjack, moogles, strago, mountain
 fe15_whatlies:  I40, G80, grandfinale, cyan, savethem, assault, falcon*2, mount2, omen3, balance, ancient, bat4
-ff1_bossb:      I85, G70, grandfinale, boss, atma, savethem, catastrophe, bat4
-ff1_dungeon:    I85, G25, metamorphosis, grandfinale, unforgiven, floating, gate, phoenix, mboss
 ff2_battle2:    I75, G75, metamorphosis, catastrophe, grandfinale, assault*2, bat3, bat4
 ff2_battleb:    H4, train, kefka, gogo, owzer*2, espers, fanatics*2, grandfinale, dream*2, gate, H:I50, H:G30, H:prelude, H:omen3, H:shadow, H:strago, H:balance, H:cave, H:forest, H:tomb, H:engine
 ff2_theme:      prelude, awakening, ruintown, ruin, balance, gau, forest*2
 ff3_eureka:     mountain, mount2, espers, dream, serpent, falcon, setzer
 ff3_world:      prelude, relm, village, balance*2
 ff4_airship:    blackjack*2, fanfare
-ff4_babil:      troops*2, mountain, mount2, returners, engine
-ff4_baron:      figaro, troops*2, returners, engine
 ff4_battle:     I15, G5, battle, grandfinale, unforgiven, chocobo, johnny, blackjack, bat2
-ff4_bomb:       metamorphosis, catastrophe, assault
-ff4_boss:       I65, G50, savethem, metamorphosis, grandfinale, boss*2
 ff4_calcobrena: kefka, grandfinale, gogo, dream
 ff4_damcyan:    omen3, cyan, zozo, strago, ruintown*2, martiallaw, cave, tomb
 ff4_giant:      gogo, magitek, floating*2, falcon, ktower, mount2, phoenix, engine*2
 ff4_giant_remix: blackjack*2, setzer, serpent
-ff4_illusion:   prelude, awakening, owzer, ruintown, ruin, forest*2, espers, cave, tomb, dream, gate, ancient, train
-ff4_longway:    omen3, ruin, forest, tomb, train
-ff4_prologue:   prelude*2, omen3, grandfinale
-ff4_redwings:   omen3, figaro, setzer, troops*2, umaro, engine, assault
 ff4_rydia:      prelude, celes, daryl, coin, relm*2, awakening, gau, town, village
-ff4_somewhere:  shadow, empire, zozo, ruin, train
 ff4_sorrow:     prelude, coin*2, ruin
 ff4_town:       town*2, village
-ff4_troia:      moogles, town, relm*2, awakening, village
-ff4_underworld: ruintown, ruin, balance, mountain, forest, serpent
-ff4_whale:      fanfare, grandfinale, blackjack*2
 ff4_zeromus:    I95, G90, atma, dmad5
-ff4_zot:        kefka, troops, fanatics, assault
 ff5_bal:        fanfare, cyan, figaro, returners*2, troops, mount2
 ff5_battle:     I10, G10, battle*2, bat2
 ff5_bridge:     I65, G70, atma, grandfinale, unforgiven, savethem
@@ -447,15 +462,12 @@ ff7_boss:       I80, G60, boss*2, atma, grandfinale, unforgiven, magitek
 ff7_costa:      prelude, spinach*2, town, veldt, moogles, village
 ff7_desert:     prelude, omen3, gau, ruin*2, train, tomb, zozo, cave
 ff7_hurry:      I99, G00, unforgiven, magitek, floating, engine, assault*2, mboss
-ff7_materia:    prelude, kefka, shadow, spinach, what*2, owzer, strago, dream*2
 ff7_pizza:      shadow, zozo, narshe, martiallaw*2, train, cave, engine, magitek
-ff7_planet:     H2, omen3, shadow, zozo, ruin*2, train, espers, tomb, dream, gate*2, phoenix, ancient
 ff7_reunion:    omen3, owzer, strago, ruin, train, espers, serpent, forest, dream
 ff7_snow:       W4, narshe, ruin*2, espers, serpent, forest, W:prelude*2, W:omen3, W:daryl, W:coin, W:gau, W:what, W:zozo, W:ruintown, W:mountain, W:train
 ff7_tifa:       prelude, rachel, relm*2, awakening*2, ruintown
 ff7_weapon:     I85, G80, boss, atma, metamorphosis, catastrophe*2, assault*2, savethem, ktower, bat3, bat4
 ff8_boss:       I85, G65, boss*2, grandfinale, floating
-ff8_heresy:     H2, empire, kefka, catastrophe, owzer, ruin, fanatics*2
 ff8_horizon:    prelude, coin, gau, town*2, ruintown, village
 ff8_landing:    I80, G65, boss, atma, metamorphosis, grandfinale, savethem*2, ktower, phoenix, assault*2, bat4
 ff8_lion:       I80, G80, atma*2, dmad5
@@ -704,11 +716,16 @@ mmx3_seahorse:      E55,                     bat4
 pw_cornered:        E55,         bat2,       bat4
 crys_mountain:      E60,         bat2, bat3
 cv3_aquarius:       E60,         bat2, bat3, bat4
+cv4_beginning:      E60,               bat3, bat4
 top_boss:           E60,               bat3, bat4
+ff4_boss:           E65,                     bat4
 ct_tension:         E68,                     bat4
+ff1_mboss:          E68,                     bat4
 ffmq_hill:          E68,                     bat4
 ff6_unforgiven:     E70,                     bat4
 ff7_gun:            E70,               bat3, bat4
+ff14_holminster:    E70,                     bat4
+sth1_final:         E70,                     bat4
 ct_theme:           E75,                     bat4
 sd1s_courage:       E75,               bat3, bat4
 ff9_hunt:           E75,               bat3, bat4
@@ -756,18 +773,23 @@ ff14_labten:        I40, mboss
 ffmq_hill:          I40, mboss
 top_boss:           I40, mboss, boss
 ct_boss:            I45, mboss, boss
+ff1_mboss:          I45, mboss, boss
 ff7_hurry2:         I45, mboss, boss
 ff6_boss:           I50,        boss
 ff14_fate_ff6:      I50,        boss
 totr_sboss:         I50,        boss
-xg_weltall:         I50,        boss        
+xg_weltall:         I50,        boss       
+ff4_boss:           I52,        boss, atma 
 ff9_hunt:           I52, mboss, boss
 lu2_boss:           I52,        boss
 top_spirit:         I55,        boss, atma        
+ff1_fiend1:         I60,        boss, atma
 ff5_boss:           I60,        boss, atma
 lu2_savior:         I60, mboss,             dmad5
 sd3_faith:          I60,        boss, atma
+ff1_dungeon:        I65,              atma
 ffmq_boss:          I65,        boss, atma
+sth1_final:         I65,                    dmad5
 bof2_barubary:      I67, mboss
 ct_tylair:          I70, mboss, boss, atma    
 ff10_seymour:       I70,              atma, dmad5
@@ -776,6 +798,7 @@ totr_pathboss:      I70,              atma, dmad5
 xg_boss:            I70,        boss, atma
 ff9_boss:           I72, mboss, boss, atma
 sd1_boss:           I72, mboss, boss, atma, dmad5
+ff1_fiend2:         I75,              atma
 ff4_fiend:          I75,              atma, dmad5
 ff9_dragons:        I75,              atma, dmad5
 fft_antipyretic:    I75,              atma, dmad5
@@ -792,6 +815,7 @@ ff7_jenova:         I85,              atma, dmad5
 ff7_rebirth:        I88,              atma, dmad5
 cc_final:           I90,              atma, dmad5
 eo3_waves:          I90,              atma, dmad5
+ff1_final:          I90,              atma, dmad5
 ff6_dmad:           I90,              atma, dmad5
 rs3_devil2:         I90,              atma, dmad5
 ff6_final:          I95,              atma, dmad5
@@ -808,6 +832,7 @@ ct_lucca:       fanfare
 ct_robo:        fanfare  
 ff3_warrior:    fanfare
 ff4_fanfare:    fanfare
+ff4_whale:      fanfare
 ff6_fanfare:    fanfare
 ff7_fanfare:    fanfare
 lal_boss:       fanfare
@@ -817,6 +842,7 @@ mmx3_zero:      fanfare
 sd3_steel:      fanfare
 
 [sleep]
+ff1_sleep: sleep
 ff4_inn: sleep
 ff5_inn: sleep
 ff6_inn: sleep
@@ -831,6 +857,7 @@ rs2_inn: sleep
 
 [death]
 cc_gameover: death
+ff1_death: death
 ff5_death: death
 ff6_death: death
 ff7_death: death
@@ -846,9 +873,10 @@ ct_magusintro: death
 
 [tierboss]
 ct: cc_flame, ct_lavos, ct_zealpalace
-ff: ff3_eureka, ff4_fiend, ff4_golbez, ff5_excastle, ff5_seal, ff7_final_part1, ff8_witches, ff9_blackwaltz, ff10_ambition, ffmq_boss, ffmq_lava
+ff: ff3_eureka, ff4_fiend, ff4_golbez, ff5_excastle, ff5_seal
 ff6: ff6_fanatics_dm, ff6_tier1_dm, ff6_tier2_dm, ff6_tier3
 chorus: ff6_fanatics_chorus, ff6_tier1_chorus, ff6_tier2_chorus
+ffmore: ff7_final_part1, ff8_heresy, ff8_witches, ff9_blackwaltz, ff10_ambition, ffmq_boss, ffmq_lava
 i: iog_whispers
 lufia: lu2_daos, lu2_void
 metroid: met3_brain
