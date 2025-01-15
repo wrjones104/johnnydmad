@@ -26,12 +26,6 @@ def print_progress_bar(cur, max):
 
 
 async def johnnydmad(c, filename):
-    if c == "chaos":
-        print("jdm chaos")
-    elif c == "standard":
-        print("jdm standard")
-    else:
-        print("jdm silent")
     try:
         with open("WorldsCollide/seeds/" + filename + ".smc", "rb") as f:
             inrom = f.read()
