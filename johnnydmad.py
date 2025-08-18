@@ -60,7 +60,40 @@ async def johnnydmad(c, filename):
     sp = get_music_spoiler()
     with open("WorldsCollide/seeds/"+filename+"_spoiler.txt", "w") as f:
         f.write(sp)
+        
+async def johnnydmad_webapp(c, input_smc_path, output_smc_path, spoiler_log_path):
+    """
+    A new version of the function that accepts full file paths
+    to avoid issues with the current working directory.
+    """
+    try:
+        with open(input_smc_path, "rb") as f:
+            inrom = f.read()
+    except IOError as e:
+        print(f"Could not read input file: {input_smc_path}")
+        raise e
+        
+    if c == "chaos":
+        f_chaos = True
+    else:
+        f_chaos = False
+    f_dupes = False
+    kw = {}
+    force_dm = None
+    metadata = {}
+    if c == "silent":
+        kw["playlist_filename"] = "silence.txt"
+        f_dupes = True
+    outrom = process_music(inrom, meta=metadata, f_chaos=f_chaos, f_dupes=f_dupes, **kw)
+    outrom = process_formation_music_by_table(outrom)
+    outrom = process_map_music(outrom)
 
+    with open(output_smc_path, "wb") as f:
+        f.write(outrom)
+
+    sp = get_music_spoiler()
+    with open(spoiler_log_path, "w") as f:
+        f.write(sp)
 
 def tierboss_test(test_song, playlist_filename=None, **kwargs):
     _, original_pool = init_playlist(playlist_filename)
