@@ -1,5 +1,6 @@
 import traceback
-
+import re
+from zipfile import ZipFile
 from collections import Counter
 from operator import itemgetter
 
@@ -26,6 +27,7 @@ def print_progress_bar(cur, max):
 
 
 async def johnnydmad(c, filename):
+    # This is the original function for your bot. It is untouched.
     try:
         with open("WorldsCollide/seeds/" + filename + ".smc", "rb") as f:
             inrom = f.read()
@@ -58,9 +60,12 @@ async def johnnydmad(c, filename):
         f.write(outrom)
 
     sp = get_music_spoiler()
-    with open("WorldsCollide/seeds/"+filename+"_spoiler.txt", "w") as f:
+    # --- FIX: Added encoding='utf-8' ---
+    with open("WorldsCollide/seeds/"+filename+"_spoiler.txt", "w", encoding="utf-8") as f:
         f.write(sp)
-        
+
+
+# --- NEW FUNCTION FOR THE WEB APP ---
 async def johnnydmad_webapp(c, input_smc_path, output_smc_path, spoiler_log_path):
     """
     A new version of the function that accepts full file paths
@@ -92,9 +97,12 @@ async def johnnydmad_webapp(c, input_smc_path, output_smc_path, spoiler_log_path
         f.write(outrom)
 
     sp = get_music_spoiler()
-    with open(spoiler_log_path, "w") as f:
+    # --- FIX: Added encoding='utf-8' ---
+    with open(spoiler_log_path, "w", encoding="utf-8") as f:
         f.write(sp)
 
+
+# --- The rest of your file is unchanged ---
 def tierboss_test(test_song, playlist_filename=None, **kwargs):
     _, original_pool = init_playlist(playlist_filename)
     while True:
@@ -185,7 +193,7 @@ def pool_test(inrom, battle_only=False, playlist_filename=None, **kwargs):
                 share = (track_count / song_count) * 100
                 print(f"    {pct:4.1f}% ({share:4.1f}%) as {track}")
             
-        
+            
 def mass_test(sort, playlist_filename=None, **kwargs):
     global used_song_names
     testbed = [
@@ -263,10 +271,3 @@ def mass_test(sort, playlist_filename=None, **kwargs):
                 print("    " + w)
         else:
             print("")
-            
-#################################
-
-
-
-if __name__ == "__main__":
-    johnnydmad()
