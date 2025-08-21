@@ -6,7 +6,6 @@ setup(
     packages=find_packages(where='.'),
     install_requires=[
         'numpy',
-        'mfvitools',
         'PyYAML'
     ],
     package_data={'': ['*.txt', '*.dat']},
