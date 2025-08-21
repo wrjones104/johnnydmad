@@ -1,9 +1,9 @@
-from setuptools import setup
+from setuptools import setup, find_packages
 
 setup(
     name='johnnydmad',
     version='0.1.0',
-    py_modules=['johnnydmad', 'musicrandomizer'],
+    packages=find_packages(),
     package_data={'': ['*.txt', '*.dat']},
     include_package_data=True,
 )
