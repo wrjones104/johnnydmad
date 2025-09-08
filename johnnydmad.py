@@ -1,5 +1,7 @@
 import traceback
 import re
+import argparse
+import asyncio
 from zipfile import ZipFile
 from collections import Counter
 from operator import itemgetter
@@ -271,3 +273,112 @@ def mass_test(sort, playlist_filename=None, **kwargs):
                 print("    " + w)
         else:
             print("")
+
+def detune_rom(tuned_rom_path, original_rom_path):
+    """
+    Restores the music in a 'tuned' ROM to its original state by copying data
+    from a clean, unmodified ROM.
+    """
+    print(f"Detuning {tuned_rom_path} using {original_rom_path} as a reference.")
+
+    try:
+        with open(tuned_rom_path, "rb") as f:
+            tuned_rom = bytearray(f.read())
+        with open(original_rom_path, "rb") as f:
+            original_rom = f.read()
+    except IOError as e:
+        print(f"Error reading ROM files: {e}")
+        return
+
+    # Helper to copy blocks of data
+    def restore_block(address, length, description):
+        if address + length > len(original_rom):
+            print(f"  Warning: Cannot restore {description} at 0x{address:X}, original ROM is too small.")
+            return
+        if address + length > len(tuned_rom):
+            print(f"  Warning: Cannot restore {description} at 0x{address:X}, tuned ROM is too small.")
+            return
+        print(f"  Restoring {description} ({length} bytes at 0x{address:X})")
+        tuned_rom[address:address+length] = original_rom[address:address+length]
+
+    # Restore data modified by process_formation_music_by_table
+    print("Restoring formation music data...")
+    restore_block(0x2BF3B, 8, "Formation battle music table")
+    restore_block(0x506F9, 5, "Pause/resume music table")
+    restore_block(0xF5900, 4096, "Formation auxiliary data")
+
+    # Restore data modified by process_map_music
+    print("Restoring map music data...")
+    restore_block(0x2D8F00, 11928, "Map data")
+
+    # Restore Bank C, which contains all the event code modifications
+    print("Restoring event code (Bank C)...")
+    restore_block(0xC0000, 65536, "Bank C")
+
+    # Restore main music data (reverting insertmfvi)
+    print("Restoring main music data...")
+    # Pointers to tables
+    restore_block(0x501E3, 3, "Instrument table pointer")
+    restore_block(0x50222, 3, "BRR pointer pointer 1")
+    restore_block(0x50228, 3, "BRR pointer pointer 2")
+    restore_block(0x5022E, 3, "BRR pointer pointer 3")
+    restore_block(0x5041C, 3, "BRR loop pointer")
+    restore_block(0x5049C, 3, "BRR pitch pointer")
+    restore_block(0x504DE, 3, "BRR ADSR pointer")
+    restore_block(0x50539, 3, "Song pointer pointer 1")
+    restore_block(0x5053F, 3, "Song pointer pointer 2")
+    restore_block(0x50545, 3, "Song pointer pointer 3")
+
+    # Music data tables
+    restore_block(0x53C5F, 188, "BRR pointers table")
+    restore_block(0x53D1C, 125, "BRR loops table")
+    restore_block(0x53D9A, 125, "BRR pitch table")
+    restore_block(0x53E18, 125, "BRR ADSR table")
+    restore_block(0x53E96, 255, "Song pointers table")
+    restore_block(0x53F95, 2720, "Instrument table")
+
+    # Config bytes
+    restore_block(0x53C5E, 1, "Song count")
+    restore_block(0x5076A, 1, "EDL value")
+
+    # Assembly hacks
+    restore_block(0x501A4, 4, "EDL hack hook")
+    restore_block(0x50B05, 54, "Shadow hack blob")
+    restore_block(0x50020, 2, "BRR remap pointer 1")
+    restore_block(0x50108, 2, "BRR remap pointer 2")
+    restore_block(0x52018, 32, "SFX BRR pointers")
+
+    # Write the detuned ROM to a new file
+    detuned_rom_path = tuned_rom_path.replace('.smc', '_detuned.smc')
+    if detuned_rom_path == tuned_rom_path:
+        detuned_rom_path += ".detuned"
+
+    try:
+        with open(detuned_rom_path, "wb") as f:
+            f.write(tuned_rom)
+        print(f"Successfully created detuned ROM: {detuned_rom_path}")
+    except IOError as e:
+        print(f"Error writing detuned ROM file: {e}")
+
+if __name__ == '__main__':
+    parser = argparse.ArgumentParser(description="A tool for randomizing and managing music in FF6 ROMs.")
+    subparsers = parser.add_subparsers(dest='command')
+
+    # Tune command
+    tune_parser = subparsers.add_parser('tune', help='Randomize music in a ROM.')
+    tune_parser.add_argument('mode', choices=['classic', 'chaos', 'silent'], help='The randomization mode.')
+    tune_parser.add_argument('input_smc', help='Path to the input ROM file.')
+    tune_parser.add_argument('output_smc', help='Path to the output ROM file.')
+    tune_parser.add_argument('spoiler_log', help='Path to the spoiler log file.')
+
+    # Detune command
+    detune_parser = subparsers.add_parser('detune', help='Restore original music to a tuned ROM.')
+    detune_parser.add_argument('tuned_rom', help='Path to the tuned ROM file.')
+    detune_parser.add_argument('original_rom', help='Path to the original, clean ROM file.')
+
+    args = parser.parse_args()
+
+    if args.command == 'tune':
+        asyncio.run(johnnydmad_webapp(args.mode, args.input_smc, args.output_smc, args.spoiler_log))
+    elif args.command == 'detune':
+        detune_rom(args.tuned_rom, args.original_rom)
